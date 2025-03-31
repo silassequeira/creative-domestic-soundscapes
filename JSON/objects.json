@@ -1,0 +1,292 @@
+{
+  "objects": [
+    {
+      "name": "Fridge",
+      "type": "Cube",
+      "size": {
+        "width": 0.8,
+        "height": 2.0,
+        "depth": 0.6
+      },
+      "position": {
+        "x": -1.5,
+        "y": 1.0,
+        "z": -1.2
+      }
+    },
+    {
+      "name": "Pantry",
+      "type": "Cube",
+      "size": {
+        "width": 1.0,
+        "height": 2.0,
+        "depth": 0.5
+      },
+      "position": {
+        "x": 1.5,
+        "y": 1.0,
+        "z": -1.2
+      }
+    },
+    {
+      "name": "Stove",
+      "type": "Cube",
+      "size": {
+        "width": 0.8,
+        "height": 0.9,
+        "depth": 0.6
+      },
+      "position": {
+        "x": 0,
+        "y": 0.5,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Frying Pan",
+      "type": "Cylinder",
+      "size": {
+        "radius": 0.15,
+        "height": 0.05
+      },
+      "position": {
+        "x": 0,
+        "y": 0.95,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Eggs",
+      "type": "Sphere",
+      "size": {
+        "radius": 0.05
+      },
+      "position": {
+        "x": -0.2,
+        "y": 1.0,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Table",
+      "type": "Cube",
+      "size": {
+        "width": 1.5,
+        "height": 0.8,
+        "depth": 1.0
+      },
+      "position": {
+        "x": 0,
+        "y": 0.4,
+        "z": 1.2
+      }
+    },
+    {
+      "name": "Plate",
+      "type": "Cylinder",
+      "size": {
+        "radius": 0.2,
+        "height": 0.02
+      },
+      "position": {
+        "x": 0,
+        "y": 0.85,
+        "z": 1.2
+      }
+    },
+    {
+      "name": "Fork",
+      "type": "Cube",
+      "size": {
+        "width": 0.02,
+        "height": 0.02,
+        "depth": 0.15
+      },
+      "position": {
+        "x": 0.1,
+        "y": 0.87,
+        "z": 1.2
+      }
+    },
+    {
+      "name": "Phone",
+      "type": "Cube",
+      "size": {
+        "width": 0.2,
+        "height": 0.02,
+        "depth": 0.1
+      },
+      "position": {
+        "x": 0.3,
+        "y": 0.85,
+        "z": 1.0
+      }
+    }
+  ],
+  "nonEssentialObjects": [
+    {
+      "name": "Kitchen Counter",
+      "type": "Cube",
+      "size": {
+        "width": 2.0,
+        "height": 0.9,
+        "depth": 0.6
+      },
+      "position": {
+        "x": 1.2,
+        "y": 0.45,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Sink",
+      "type": "Cube",
+      "size": {
+        "width": 0.6,
+        "height": 0.2,
+        "depth": 0.4
+      },
+      "position": {
+        "x": 1.2,
+        "y": 0.55,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Cabinets (Upper)",
+      "type": "Cube",
+      "size": {
+        "width": 2.0,
+        "height": 0.8,
+        "depth": 0.4
+      },
+      "position": {
+        "x": 1.2,
+        "y": 1.8,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Cabinets (Lower)",
+      "type": "Cube",
+      "size": {
+        "width": 2.0,
+        "height": 0.8,
+        "depth": 0.6
+      },
+      "position": {
+        "x": 1.2,
+        "y": 0.4,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Microwave",
+      "type": "Cube",
+      "size": {
+        "width": 0.5,
+        "height": 0.3,
+        "depth": 0.4
+      },
+      "position": {
+        "x": 0.8,
+        "y": 1.1,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Toaster",
+      "type": "Cube",
+      "size": {
+        "width": 0.3,
+        "height": 0.25,
+        "depth": 0.2
+      },
+      "position": {
+        "x": 1.5,
+        "y": 1.1,
+        "z": -1.5
+      }
+    },
+    {
+      "name": "Dish Rack",
+      "type": "Cube",
+      "size": {
+        "width": 0.5,
+        "height": 0.2,
+        "depth": 0.4
+      },
+      "position": {
+        "x": 1.2,
+        "y": 1.1,
+        "z": -1.3
+      }
+    },
+    {
+      "name": "Coffee Maker",
+      "type": "Cube",
+      "size": {
+        "width": 0.4,
+        "height": 0.5,
+        "depth": 0.3
+      },
+      "position": {
+        "x": 1.2,
+        "y": 1.1,
+        "z": -1.4
+      }
+    },
+    {
+      "name": "Trash Can",
+      "type": "Cylinder",
+      "size": {
+        "radius": 0.3,
+        "height": 0.8
+      },
+      "position": {
+        "x": -1.2,
+        "y": 0.4,
+        "z": -1.0
+      }
+    },
+    {
+      "name": "Window",
+      "type": "Plane",
+      "size": {
+        "width": 1.5,
+        "height": 1.0
+      },
+      "position": {
+        "x": 0,
+        "y": 1.5,
+        "z": 1.8
+      }
+    },
+    {
+      "name": "Wall Clock",
+      "type": "Cylinder",
+      "size": {
+        "radius": 0.3,
+        "height": 0.05
+      },
+      "position": {
+        "x": -1.5,
+        "y": 2.0,
+        "z": 0
+      }
+    },
+    {
+      "name": "Rug",
+      "type": "Plane",
+      "size": {
+        "width": 2.0,
+        "height": 1.5
+      },
+      "position": {
+        "x": 0,
+        "y": 0.01,
+        "z": 0
+      }
+    }
+  ]
+}

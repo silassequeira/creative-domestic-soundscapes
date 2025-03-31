@@ -1,0 +1,176 @@
+{
+  "agentPath": {
+    "sceneDuration": 180,
+    "movementSegments": [
+      {
+        "phase": "Minute 1 - Frustration Building",
+        "segments": [
+          {
+            "startTime": 0,
+            "endTime": 10,
+            "description": "Fridge search failure",
+            "triggeredSounds": [1, 2, 3, 6],
+            "path": [
+              {
+                "timestamp": 0.0,
+                "position": { "x": -1.5, "y": 0, "z": -0.5 },
+                "interaction": "Approach fridge",
+                "soundTriggers": []
+              },
+              {
+                "timestamp": 1.2,
+                "position": { "x": -1.5, "y": 0, "z": -1.2 },
+                "interaction": "Open fridge door",
+                "soundTriggers": [1]
+              },
+              {
+                "timestamp": 2.5,
+                "position": { "x": -1.4, "y": 0, "z": -1.3 },
+                "interaction": "Rummage fridge shelves",
+                "soundTriggers": [2]
+              },
+              {
+                "timestamp": 8.0,
+                "position": { "x": -1.6, "y": 0, "z": -1.1 },
+                "interaction": "Slam fridge door",
+                "soundTriggers": [3, 6]
+              }
+            ]
+          },
+          {
+            "startTime": 10,
+            "endTime": 25,
+            "description": "Pantry desperation",
+            "triggeredSounds": [4, 5, 6, 12],
+            "path": [
+              {
+                "timestamp": 10.0,
+                "position": { "x": 1.3, "y": 0, "z": -1.0 },
+                "interaction": "Stride to pantry",
+                "soundTriggers": []
+              },
+              {
+                "timestamp": 11.5,
+                "position": { "x": 1.5, "y": 0, "z": -1.2 },
+                "interaction": "Yank pantry door",
+                "soundTriggers": [4]
+              },
+              {
+                "timestamp": 13.0,
+                "position": { "x": 1.6, "y": 0, "z": -1.3 },
+                "interaction": "Shove boxes violently",
+                "soundTriggers": [5]
+              },
+              {
+                "timestamp": 18.0,
+                "position": { "x": 1.5, "y": 0, "z": -1.1 },
+                "interaction": "Discover bread crusts",
+                "soundTriggers": [12]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "phase": "Minute 2 - Counter Conflict",
+        "segments": [
+          {
+            "startTime": 25,
+            "endTime": 40,
+            "description": "Confrontation at counter",
+            "triggeredSounds": [12, 13],
+            "path": [
+              {
+                "timestamp": 25.0,
+                "position": { "x": 0.8, "y": 0, "z": -1.0 },
+                "interaction": "Storm to counter",
+                "soundTriggers": []
+              },
+              {
+                "timestamp": 26.5,
+                "position": { "x": 0.0, "y": 0, "z": -1.2 },
+                "interaction": "Slam bread bag",
+                "soundTriggers": [4]
+              },
+              {
+                "timestamp": 28.0,
+                "position": { "x": 0.2, "y": 0, "z": -1.1 },
+                "interaction": "Gesture aggressively",
+                "soundTriggers": [12]
+              },
+              {
+                "timestamp": 35.0,
+                "position": { "x": 0.3, "y": 0, "z": 1.0 },
+                "interaction": "Grab phone",
+                "soundTriggers": [13]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "phase": "Minute 3 - Aggressive Cooking",
+        "segments": [
+          {
+            "startTime": 60,
+            "endTime": 90,
+            "description": "Violent meal preparation",
+            "triggeredSounds": [7, 8, 9, 11],
+            "path": [
+              {
+                "timestamp": 60.0,
+                "position": { "x": -0.5, "y": 0, "z": -1.4 },
+                "interaction": "Stomp to stove",
+                "soundTriggers": []
+              },
+              {
+                "timestamp": 61.5,
+                "position": { "x": 0.0, "y": 0, "z": -1.5 },
+                "interaction": "Slam pan on stove",
+                "soundTriggers": [8]
+              },
+              {
+                "timestamp": 63.0,
+                "position": { "x": -0.2, "y": 0, "z": -1.5 },
+                "interaction": "Crack eggs violently",
+                "soundTriggers": [7]
+              },
+              {
+                "timestamp": 65.0,
+                "position": { "x": 0.1, "y": 0, "z": -1.4 },
+                "interaction": "Aggressive stirring",
+                "soundTriggers": [9]
+              },
+              {
+                "timestamp": 75.0,
+                "position": { "x": 0.0, "y": 0, "z": 1.2 },
+                "interaction": "Slam plate on table",
+                "soundTriggers": [11]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "soundMapping": {
+    "positionalAudio": [
+      {
+        "soundId": 3,
+        "sourceObject": "Fridge",
+        "maxDistance": 2.5
+      },
+      {
+        "soundId": 8,
+        "sourceObject": "Stove",
+        "maxDistance": 1.8
+      },
+      {
+        "soundId": 11,
+        "sourceObject": "Table",
+        "maxDistance": 2.0
+      }
+    ],
+    "globalAudio": [6, 12, 15]
+  }
+}

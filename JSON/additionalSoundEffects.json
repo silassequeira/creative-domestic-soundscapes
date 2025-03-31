@@ -1,0 +1,114 @@
+{
+  "additionalSoundEffects": [
+    {
+      "sequence": 16,
+      "title": "Distant Traffic Hum",
+      "description": "Low-frequency urban background noise from outside window",
+      "duration": 15.0,
+      "layer": 1,
+      "position": { "x": 0, "y": 1.5, "z": 2.0 },
+      "loop": true
+    },
+    {
+      "sequence": 17,
+      "title": "Fridge Motor Rumble",
+      "description": "Low continuous hum from fridge compressor",
+      "duration": 8.0,
+      "layer": 1,
+      "position": { "x": -1.5, "y": 1.2, "z": -1.2 },
+      "loop": true
+    },
+    {
+      "sequence": 18,
+      "title": "Overhead Light Buzz",
+      "description": "Subtle fluorescent light fixture hum",
+      "duration": 10.0,
+      "layer": 1,
+      "position": { "x": 0, "y": 2.5, "z": 0 },
+      "loop": true
+    },
+    {
+      "sequence": 19,
+      "title": "Glass Jostle in Door",
+      "description": "Bottles rattling in fridge door when slammed",
+      "duration": 0.4,
+      "layer": 2,
+      "position": { "x": -1.5, "y": 1.5, "z": -1.0 }
+    },
+    {
+      "sequence": 20,
+      "title": "Cabinet Creak",
+      "description": "Old cabinet settling as Jake leans against counter",
+      "duration": 0.8,
+      "layer": 2,
+      "position": { "x": 1.5, "y": 0.8, "z": -1.0 }
+    },
+    {
+      "sequence": 21,
+      "title": "Gas Burner Ignition",
+      "description": "Click-woosh of gas stove being lit",
+      "duration": 1.2,
+      "layer": 3,
+      "position": { "x": 0, "y": 0.95, "z": -1.5 }
+    },
+    {
+      "sequence": 22,
+      "title": "Chair Leg Scrape",
+      "description": "Wooden chair dragged slightly on floor",
+      "duration": 0.6,
+      "layer": 2,
+      "position": { "x": 0.5, "y": 0.4, "z": 1.2 }
+    },
+    {
+      "sequence": 23,
+      "title": "Phone Notification Buzz",
+      "description": "Short vibration burst against wooden surface",
+      "duration": 0.3,
+      "layer": 2,
+      "position": { "x": 0.3, "y": 0.85, "z": 1.0 }
+    },
+    {
+      "sequence": 24,
+      "title": "Dripping Faucet",
+      "description": "Irregular water drops hitting metal sink",
+      "duration": 4.0,
+      "layer": 1,
+      "position": { "x": 0.5, "y": 0.8, "z": -1.5 },
+      "loop": true
+    },
+    {
+      "sequence": 25,
+      "title": "Footsteps Approach",
+      "description": "Angry footsteps entering kitchen space",
+      "duration": 2.5,
+      "layer": 2,
+      "position": { "x": -2.0, "y": 0, "z": 0 }
+    },
+    {
+      "sequence": 26,
+      "title": "Egg Sizzle",
+      "description": "Continuous frying sound with oil pops",
+      "duration": 5.0,
+      "layer": 2,
+      "position": { "x": 0, "y": 0.95, "z": -1.5 },
+      "loop": true
+    },
+    {
+      "sequence": 27,
+      "title": "Wall Clock Ticking",
+      "description": "Persistent analog clock mechanism sound",
+      "duration": 10.0,
+      "layer": 1,
+      "position": { "x": 0, "y": 1.8, "z": 1.5 },
+      "loop": true
+    },
+    {
+      "sequence": 28,
+      "title": "Buzzing Fly",
+      "description": "Annoying insect circling kitchen space",
+      "duration": 3.0,
+      "layer": 2,
+      "position": { "x": 0.2, "y": 1.5, "z": 0.5 }
+    }
+  ]
+}
