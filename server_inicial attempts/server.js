@@ -25,14 +25,12 @@ let tokenExpiry = 0;
 
 // Function to get a valid API token
 async function getApiToken() {
-    // Check if we have a valid token
     if (apiToken && tokenExpiry > Date.now()) {
         return apiToken;
     }
 
     try {
         console.log('Requesting new API token...');
-        // Get a new token using client credentials
         const response = await axios.post('https://freesound.org/apiv2/oauth2/access_token/', null, {
             params: {
                 client_id: FREESOUND_CLIENT_ID,
@@ -42,9 +40,7 @@ async function getApiToken() {
         });
 
         apiToken = response.data.access_token;
-        // Set expiry (typically 24 hours, but we subtract a minute for safety)
         tokenExpiry = Date.now() + (response.data.expires_in * 1000) - 60000;
-
         console.log('New token acquired, expires in', response.data.expires_in, 'seconds');
         return apiToken;
     } catch (error) {
@@ -53,27 +49,57 @@ async function getApiToken() {
     }
 }
 
-// Endpoint to search for sounds
+// Endpoint to search for sounds with optional duration filter
 app.get('/api/sounds/search', async (req, res) => {
     try {
         const token = await getApiToken();
-        const { query, filter, page, page_size } = req.query;
+        const { query, filter, page, page_size, target_duration } = req.query;
 
-        console.log(`Searching for sounds with query: "${query}"`);
+        console.log(`Searching for sounds with query: "${query}", filter: "${filter}"`);
+
+        // --- Modification: Construct the filter string if needed ---
+        let apiFilter = filter;
+        if (!apiFilter && target_duration) {
+            const durationNum = parseFloat(target_duration);
+            if (!isNaN(durationNum)) {
+                const minDur = Math.max(0, durationNum - 0.5).toFixed(1);
+                const maxDur = (durationNum + 0.5).toFixed(1);
+                apiFilter = `duration:[${minDur} TO ${maxDur}]`;
+                console.log(`Applying generated duration filter: ${apiFilter}`);
+            }
+        }
+        // --- End Modification ---
 
         const response = await axios.get(`${FREESOUND_API_URL}/search/text/`, {
             params: {
                 query,
-                filter,
+                filter: apiFilter,
                 page: page || 1,
-                page_size: page_size || 15
+                page_size: page_size || 15,
+                fields: "id,name,duration,previews,download,license"
             },
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         });
 
-        console.log(`Found ${response.data.count} results`);
+        console.log(`Found ${response.data.count} results for query "${query}" with filter "${apiFilter}"`);
+
+        // --- Optional: Server-side sort by duration proximity ---
+        let results = response.data.results;
+        if (target_duration && results.length > 1) {
+            const durationNum = parseFloat(target_duration);
+            if (!isNaN(durationNum)) {
+                results.sort((a, b) => {
+                    const diffA = Math.abs(a.duration - durationNum);
+                    const diffB = Math.abs(b.duration - durationNum);
+                    return diffA - diffB;
+                });
+                console.log(`Sorted results by proximity to duration ${target_duration}s. Closest: ${results[0]?.name} (${results[0]?.duration}s)`);
+                response.data.results = results;
+            }
+        }
+
         res.json(response.data);
     } catch (error) {
         console.error('API request error:', error.response?.data || error.message);
@@ -117,14 +143,12 @@ app.get('/api/sounds/:id/download', async (req, res) => {
 
         console.log(`Getting download URL for sound ID: ${soundId}`);
 
-        // First get the sound info to get the download link
         const soundResponse = await axios.get(`${FREESOUND_API_URL}/sounds/${soundId}/`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         });
 
-        // Get the download info
         const downloadResponse = await axios.get(`${FREESOUND_API_URL}/sounds/${soundId}/download/`, {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -132,7 +156,6 @@ app.get('/api/sounds/:id/download', async (req, res) => {
         });
 
         console.log(`Download URL acquired for "${soundResponse.data.name}"`);
-        // Return just the direct download URL to Unity
         res.json({
             name: soundResponse.data.name,
             download_url: downloadResponse.data.download_url
