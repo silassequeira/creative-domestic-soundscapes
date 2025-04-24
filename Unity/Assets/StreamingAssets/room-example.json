@@ -1,0 +1,70 @@
+{
+  "environment": {
+    "walls": [
+      {
+        "id": "Wall_1",
+        "position": [ 1.5, 1.5, 0 ],
+        "width": 0.1,
+        "height": 3,
+        "depth": 4,
+        "rotation": [ 0, 90, 0 ]
+      },
+      {
+        "id": "Wall_2",
+        "position": [ -1.5, 1.5, 0 ],
+        "width": 0.1,
+        "height": 3,
+        "depth": 4,
+        "rotation": [ 0, 90, 0 ]
+      },
+      {
+        "id": "Wall_3",
+        "position": [ 0, 1.5, 2 ],
+        "width": 3,
+        "height": 3,
+        "depth": 0.1,
+        "rotation": [ 0, 0, 0 ]
+      },
+      {
+        "id": "Wall_4",
+        "position": [ 0, 1.5, -2 ],
+        "width": 3,
+        "height": 3,
+        "depth": 0.1,
+        "rotation": [ 0, 180, 0 ]
+      },
+      {
+        "id": "Wall_5",
+        "position": [ 1, 1.5, 1 ],
+        "width": 1,
+        "height": 3,
+        "depth": 0.1,
+        "rotation": [ 0, 45, 0 ]
+      },
+      {
+        "id": "Wall_6",
+        "position": [ -1, 1.5, -1 ],
+        "width": 1,
+        "height": 3,
+        "depth": 0.1,
+        "rotation": [ 0, -45, 0 ]
+      },
+      {
+        "id": "Wall_7",
+        "position": [ -1.2, 1.5, 1.5 ],
+        "width": 0.8,
+        "height": 3,
+        "depth": 0.1,
+        "rotation": [ 0, 135, 0 ]
+      }
+    ],
+    "floor": {
+      "id": "Floor",
+      "position": [ 0, 0, 0 ],
+      "width": 3,
+      "height": 0.1,
+      "depth": 4,
+      "rotation": [ 0, 0, 0 ]
+    }
+  }
+}
