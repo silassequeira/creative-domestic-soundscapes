@@ -1,0 +1,177 @@
+Fill the missing numbers in this structure
+{
+   "environment": {
+     "name": "Bedroom",
+     "width": "",
+     "depth": "",
+     "wall_thickness": "",
+     "shapes": [
+       {
+         "name": "Floor",
+         "shape": "Cube",
+         "size": { "x": "", "y": "", "z": "" },
+         "position": { "x": "", "y": "", "z": "" },
+         "rotation": { "x": "", "y": "", "z": "" },
+         "color": "#FFFFFF"
+       },
+       {
+         "name": "Wall_North",
+         "shape": "Cube",
+         "size": { "x": "", "y": "", "z": "" },
+         "position": { "x": "", "y": "", "z": "" },
+         "color": "#FFFFFF"
+       },
+       {
+         "name": "Wall_South",
+         "shape": "Cube",
+         "size": { "x": "", "y": "", "z": "" },
+         "position": { "x": "", "y": "", "z": "" },
+         "color": "#FFFFFF"
+       },
+       {
+         "name": "Wall_East",
+         "shape": "Cube",
+         "size": { "x": "", "y": "", "z": "" },
+         "position": { "x": "", "y": "", "z": "" },
+         "color": "#FFFFFF"
+       },
+       {
+         "name": "Wall_West",
+         "shape": "Cube",
+         "size": { "x": "", "y": "", "z": "" },
+         "position": { "x": "", "y": "", "z": "" },
+         "color": "#FFFFFF"
+       }
+     ]
+   },
+   "objects": [
+     {
+       "name": "object1",
+       "shape": "Cube",
+       "size": { "x": "", "y": "", "z": "" },
+       "position": { "x": "", "y": "", "z": "" },
+       "rotation": { "x": "", "y": "", "z": "" },
+       "color": "#FFFFFF"
+     },
+     {
+       "name": "object2",
+       "shape": "Cylinder",
+       "size": { "x": "", "y": "", "z": "" },
+       "position": { "x": "", "y": "", "z": "" },
+       "rotation": { "x": "", "y": "", "z": "" },
+       "color": "#FFFFFF"
+     },
+     {
+
+       "name": "object3",
+       "shape": "Sphere",
+       "size": { "x": "", "y": "", "z": "" },
+       "position": { "x": "", "y": "", "z": "" },
+       "rotation": { "x": "", "y": "", "z": "" },
+       "color": "#FFFFFF"
+     },
+     {
+       "name": "object4",
+       "shape": "Capsule",
+       "size": { "x": "", "y": "", "z": "" },
+       "position": { "x": "", "y": "", "z": "" },
+       "rotation": { "x": "", "y": "", "z": "" },
+       "color": "#FFFFFF"
+     }, ...
+   ]
+ }
+ 
+
+Change the numbers, 
+ {
+  "environment": {
+    "name": "Bedroom",
+    "width": 3.5,
+    "depth": 4.0,
+    "wall_thickness": 15,
+    "shapes": [
+      {
+        "name": "Floor",
+        "shape": "Cube",
+        "size": { "x": 3.5, "y": 0.1, "z": 4.0 },
+        "position": { "x": 0, "y": -0.05, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#A0522D"
+      },
+      {
+        "name": "Wall_North",
+        "shape": "Cube",
+        "size": { "x": 3.5, "y": 2.5, "z": 0.15 },
+        "position": { "x": 0, "y": 1.25, "z": -2.0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#F0F8FF"
+      },
+      {
+        "name": "Wall_South",
+        "shape": "Cube",
+        "size": { "x": 3.5, "y": 2.5, "z": 0.15 },
+        "position": { "x": 0, "y": 1.25, "z": 2.0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#F0F8FF"
+      },
+      {
+        "name": "Wall_East",
+        "shape": "Cube",
+        "size": { "x": 0.15, "y": 2.5, "z": 4.0 },
+        "position": { "x": 1.75, "y": 1.25, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#F0F8FF"
+      },
+      {
+        "name": "Wall_West",
+        "shape": "Cube",
+        "size": { "x": 0.15, "y": 2.5, "z": 4.0 },
+        "position": { "x": -1.75, "y": 1.25, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#F0F8FF"
+      }
+    ]
+  },
+  "objects": [
+    {
+      "name": "Bed",
+      "shape": "Cube",
+      "size": { "x": 2.0, "y": 0.5, "z": 1.5 },
+      "position": { "x": 0.5, "y": 0.25, "z": 1.0 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#8B4513"
+    },
+    {
+      "name": "Nightstand",
+      "shape": "Cube",
+      "size": { "x": 0.5, "y": 0.6, "z": 0.5 },
+      "position": { "x": 1.5, "y": 0.3, "z": 1.8 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#D2B48C"
+    },
+    {
+      "name": "Lamp",
+      "shape": "Cylinder",
+      "size": { "x": 0.15, "y": 0.7, "z": 0.15 },
+      "position": { "x": 1.5, "y": 0.95, "z": 1.8 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#FFFFE0"
+    },
+    {
+      "name": "Rug",
+      "shape": "Cube",
+      "size": { "x": 2.5, "y": 0.05, "z": 3.0 },
+      "position": { "x": 0, "y": -0.025, "z": 0.5 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#B8860B"
+    },
+    {
+      "name": "Wardrobe",
+      "shape": "Cube",
+      "size": { "x": 1.0, "y": 2.0, "z": 0.6 },
+      "position": { "x": -1.25, "y": 1.0, "z": -1.5 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#A9A9A9"
+    }
+  ]
+}
