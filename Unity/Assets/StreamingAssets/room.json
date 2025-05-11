@@ -1,0 +1,164 @@
+{
+  "environment": {
+    "name": "Bedroom Software Developer",
+    "width": 4.5,
+    "depth": 5.0,
+    "wall_thickness": 0.15,
+    "shapes": [
+      {
+        "name": "Floor",
+        "shape": "Cube",
+        "size": { "x": 4.5, "y": 0.05, "z": 5.0 },
+        "position": { "x": 0, "y": -0.025, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#A0A0A0"
+      },
+      {
+        "name": "Wall_North",
+        "shape": "Cube",
+        "size": { "x": 4.5, "y": 2.7, "z": 0.15 },
+        "position": { "x": 0, "y": 1.35, "z": 2.5 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#E0E0E0"
+      },
+      {
+        "name": "Wall_South",
+        "shape": "Cube",
+        "size": { "x": 4.5, "y": 2.7, "z": 0.15 },
+        "position": { "x": 0, "y": 1.35, "z": -2.5 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#E0E0E0"
+      },
+      {
+        "name": "Wall_East",
+        "shape": "Cube",
+        "size": { "x": 0.15, "y": 2.7, "z": 5.0 },
+        "position": { "x": 2.25, "y": 1.35, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#E0E0E0"
+      },
+      {
+        "name": "Wall_West",
+        "shape": "Cube",
+        "size": { "x": 0.15, "y": 2.7, "z": 5.0 },
+        "position": { "x": -2.25, "y": 1.35, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#E0E0E0"
+      },
+      {
+        "name": "Window1",
+        "shape": "Cube",
+        "size": { "x": 1.5, "y": 1.2, "z": 0.2 },
+        "position": { "x": 0, "y": 1.5, "z": 2.425 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#B0C4DE"
+      },
+      {
+        "name": "Door1",
+        "shape": "Cube",
+        "size": { "x": 0.9, "y": 2.1, "z": 0.2 },
+        "position": { "x": -1.8, "y": 1.05, "z": -2.425 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "color": "#8B4513"
+      }
+    ]
+  },
+  "objects": [
+    {
+      "name": "Bed",
+      "shape": "Cube",
+      "size": { "x": 1.4, "y": 0.5, "z": 2.0 },
+      "position": { "x": -1.4, "y": 0.25, "z": 1.5 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#4A4A4A"
+    },
+    {
+      "name": "Desk",
+      "shape": "Cube",
+      "size": { "x": 1.8, "y": 0.75, "z": 0.7 },
+      "position": { "x": 0.8, "y": 0.375, "z": -1.8 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#654321"
+    },
+    {
+      "name": "Office_Chair",
+      "shape": "Capsule",
+      "size": { "x": 0.6, "y": 1.1, "z": 0.6 },
+      "position": { "x": 0.8, "y": 0.55, "z": -1.1 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#2F4F4F"
+    },
+    {
+      "name": "Monitor1",
+      "shape": "Cube",
+      "size": { "x": 0.7, "y": 0.4, "z": 0.05 },
+      "position": { "x": 0.4, "y": 1.05, "z": -1.8 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#1C1C1C"
+    },
+    {
+      "name": "Monitor2",
+      "shape": "Cube",
+      "size": { "x": 0.7, "y": 0.4, "z": 0.05 },
+      "position": { "x": 1.2, "y": 1.05, "z": -1.8 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#1C1C1C"
+    },
+    {
+      "name": "Keyboard",
+      "shape": "Cube",
+      "size": { "x": 0.45, "y": 0.03, "z": 0.15 },
+      "position": { "x": 0.8, "y": 0.765, "z": -1.5 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#333333"
+    },
+    {
+      "name": "Mouse",
+      "shape": "Capsule",
+      "size": { "x": 0.07, "y": 0.03, "z": 0.12 },
+      "position": { "x": 1.15, "y": 0.765, "z": -1.5 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#383838"
+    },
+    {
+      "name": "Bookshelf",
+      "shape": "Cube",
+      "size": { "x": 0.8, "y": 1.8, "z": 0.3 },
+      "position": { "x": -1.85, "y": 0.9, "z": -0.5 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#70543E"
+    },
+    {
+      "name": "Desk_Lamp",
+      "shape": "Cylinder",
+      "size": { "x": 0.15, "y": 0.4, "z": 0.15 },
+      "position": { "x": -0.1, "y": 0.95, "z": -1.8 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#D3D3D3"
+    },
+    {
+      "name": "Laptop",
+      "shape": "Cube",
+      "size": { "x": 0.35, "y": 0.03, "z": 0.25 },
+      "position": { "x": 0.8, "y": 0.78, "z": -2.2 },
+      "rotation": { "x": 15, "y": 0, "z": 0 },
+      "color": "#808080"
+    },
+    {
+      "name": "Whiteboard",
+      "shape": "Cube",
+      "size": { "x": 1.2, "y": 0.9, "z": 0.02 },
+      "position": { "x": 0, "y": 1.7, "z": 2.4 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#FFFFFF"
+    },
+    {
+      "name": "Rug",
+      "shape": "Cube",
+      "size": { "x": 2.0, "y": 0.01, "z": 3.0 },
+      "position": { "x": 0, "y": 0.005, "z": 0.5 },
+      "rotation": { "x": 0, "y": 0, "z": 0 },
+      "color": "#506070"
+    }
+  ]
+}

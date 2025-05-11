@@ -72,3 +72,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# .gitignore
+# Ignore dynamically generated audio files
+Unity/Assets/StreamingAssets/Sounds/current_scene/*
+# But keep the folder
+!Unity/Assets/StreamingAssets/Sounds/current_scene/.gitkeep
+
+# Keep the sound mapping
+!Unity/Assets/StreamingAssets/unity_sound_mappings.json

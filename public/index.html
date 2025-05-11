@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P4MI: OLLAMA Example</title>
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <section id="info">
+        <h3>Available Models</h3>
+        <div id="model-list">Loading...</div>
+    </section>
+    <section>
+        <div><b>Session ID:</b> <span id="sessionID">Loading</span></div>
+    </section>
+    <main>
+        <div id="chat-container"></div>
+        <form id="chat-form">
+            <input type="text" id="user-input" class="submission-item" placeholder="Type your message..." required />
+            <button type="submit" id="submit-bt" class="submission-item">Send</button>
+        </form>
+    </main>
+    <script src="/main.js"></script>
+</body>
+
+</html>

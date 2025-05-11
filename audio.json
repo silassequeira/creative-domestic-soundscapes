@@ -1,0 +1,74 @@
+{
+  "scene": {
+    "filter_params": {
+      "duration": [0.5, 3],
+      "filesize": "< 2MB",
+      "license": "creative_commons",
+      "ac_single_event": true
+    },
+    "interactions": [
+      {
+        "title": "Keyboard Typing",
+        "object": "Keyboard",
+        "freesound_query": "computer keyboard typing fast",
+        "tags": ["typing", "keyboard", "computer", "office"],
+        "duration": 2.8,
+        "loop": false,
+        "volume": 0.65
+      },
+      {
+        "title": "Mouse Click",
+        "object": "Mouse",
+        "freesound_query": "computer mouse click single",
+        "tags": ["mouse", "click", "computer", "button"],
+        "duration": 0.6,
+        "loop": false,
+        "volume": 0.5
+      },
+      {
+        "title": "Office Chair Roll",
+        "object": "Office_Chair",
+        "freesound_query": "office chair roll short",
+        "tags": ["chair", "roll", "office", "furniture"],
+        "duration": 1.5,
+        "loop": false,
+        "volume": 0.4
+      },
+      {
+        "title": "Desk Lamp Switch",
+        "object": "Desk_Lamp",
+        "freesound_query": "lamp switch click on off",
+        "tags": ["lamp", "switch", "click", "light"],
+        "duration": 0.8,
+        "loop": false,
+        "volume": 0.7
+      },
+      {
+        "title": "Laptop Lid Close",
+        "object": "Laptop",
+        "freesound_query": "laptop lid close",
+        "tags": ["laptop", "close", "computer", "mechanical"],
+        "duration": 1.1,
+        "loop": false,
+        "volume": 0.55
+      },
+      {
+        "title": "Bedroom Door Close",
+        "object": "Door1",
+        "freesound_query": "interior wood door close",
+        "tags": ["door", "close", "wood", "room"],
+        "duration": 1.3,
+        "loop": false,
+        "volume": 0.6
+      }
+    ],
+    "background": {
+      "title": "Quiet Room with Computer Hum",
+      "freesound_query": "quiet room ambience computer fan hum",
+      "tags": ["ambient", "room_tone", "computer", "quiet", "hum"],
+      "duration": 180,
+      "loop": true,
+      "volume": 0.15
+    }
+  }
+}

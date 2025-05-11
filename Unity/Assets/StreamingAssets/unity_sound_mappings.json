@@ -1,0 +1,67 @@
+{
+  "soundMappings": [
+    {
+      "title": "Keyboard Typing",
+      "type": "interaction",
+      "objectName": "Keyboard",
+      "filename": "keyboard_keyboard_typing_559893.wav",
+      "duration": 7.83288,
+      "loop": false,
+      "volume": 0.65
+    },
+    {
+      "title": "Mouse Click",
+      "type": "interaction",
+      "objectName": "Mouse",
+      "filename": "mouse_mouse_click_201800.wav",
+      "duration": 14.0419,
+      "loop": false,
+      "volume": 0.5
+    },
+    {
+      "title": "Office Chair Roll",
+      "type": "interaction",
+      "objectName": "Office_Chair",
+      "filename": "office_chair_office_chair_roll_15475.wav",
+      "duration": 21.8877,
+      "loop": false,
+      "volume": 0.4
+    },
+    {
+      "title": "Desk Lamp Switch",
+      "type": "interaction",
+      "objectName": "Desk_Lamp",
+      "filename": "desk_lamp_desk_lamp_switch_765004.wav",
+      "duration": 19.9341,
+      "loop": false,
+      "volume": 0.7
+    },
+    {
+      "title": "Laptop Lid Close",
+      "type": "interaction",
+      "objectName": "Laptop",
+      "filename": "laptop_laptop_lid_close_556762.wav",
+      "duration": 13.7462,
+      "loop": false,
+      "volume": 0.55
+    },
+    {
+      "title": "Bedroom Door Close",
+      "type": "interaction",
+      "objectName": "Door1",
+      "filename": "door1_bedroom_door_close_452599.wav",
+      "duration": 32.2249,
+      "loop": false,
+      "volume": 0.6
+    },
+    {
+      "title": "Quiet Room with Computer Hum",
+      "type": "background",
+      "objectName": "Background",
+      "filename": "background_quiet_room_with_computer_hum_712564.wav",
+      "duration": 18.0637,
+      "loop": true,
+      "volume": 0.15
+    }
+  ]
+}
