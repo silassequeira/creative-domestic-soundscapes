@@ -1,74 +1,106 @@
 {
   "scene": {
     "filter_params": {
-      "duration": [0.5, 3],
+      "duration": [
+        0.5,
+        3
+      ],
       "filesize": "< 2MB",
       "license": "creative_commons",
       "ac_single_event": true
     },
     "interactions": [
       {
-        "title": "Desk drawer open",
-        "object": "Desk",
-        "freesound_query": "wooden drawer open",
-        "tags": ["wooden", "drawer", "open"],
-        "duration": 2.0,
+        "title": "Typing on Keyboard",
+        "object": "Keyboard",
+        "freesound_query": "mechanical keyboard typing",
+        "tags": [
+          "typing",
+          "keyboard",
+          "click"
+        ],
+        "duration": 2.1,
         "loop": false,
         "volume": 0.6
       },
       {
-        "title": "Chair swivel",
+        "title": "Chair Swivel",
         "object": "Chair",
         "freesound_query": "office chair swivel",
-        "tags": ["chair", "swivel", "metal"],
-        "duration": 1.0,
-        "loop": false,
-        "volume": 0.4
-      },
-      {
-        "title": "Telescope adjustment",
-        "object": "Telescope",
-        "freesound_query": "camera tripod adjust",
-        "tags": ["adjust", "metal", "click"],
+        "tags": [
+          "chair",
+          "swivel",
+          "squeak"
+        ],
         "duration": 1.5,
         "loop": false,
         "volume": 0.3
       },
       {
-        "title": "Computer typing",
-        "object": "Computer",
-        "freesound_query": "mechanical keyboard typing",
-        "tags": ["typing", "keyboard", "mechanical"],
-        "duration": 2.5,
+        "title": "Mouse Click",
+        "object": "Monitor",
+        "freesound_query": "computer mouse click",
+        "tags": [
+          "mouse",
+          "click",
+          "computer"
+        ],
+        "duration": 0.3,
         "loop": false,
         "volume": 0.5
       },
       {
-        "title": "Planet model pick-up",
-        "object": "PlanetModel",
-        "freesound_query": "small object pick up",
-        "tags": ["pickup", "plastic", "clink"],
-        "duration": 1.0,
+        "title": "Opening Book",
+        "object": "Bookshelf",
+        "freesound_query": "book open page turn",
+        "tags": [
+          "book",
+          "open",
+          "page"
+        ],
+        "duration": 1.8,
         "loop": false,
-        "volume": 0.2
+        "volume": 0.4
       },
       {
-        "title": "Bed sheet rustle",
-        "object": "Bed",
-        "freesound_query": "sheet rustle",
-        "tags": ["fabric", "rustle", "bed"],
-        "duration": 2.0,
+        "title": "Laptop Key Press",
+        "object": "Laptop",
+        "freesound_query": "laptop key press",
+        "tags": [
+          "laptop",
+          "key",
+          "press"
+        ],
+        "duration": 0.7,
         "loop": false,
-        "volume": 0.3
+        "volume": 0.5
+      },
+      {
+        "title": "Setting down Mug",
+        "object": "Nightstand",
+        "freesound_query": "mug set down table",
+        "tags": [
+          "mug",
+          "set down",
+          "table"
+        ],
+        "duration": 1.0,
+        "loop": false,
+        "volume": 0.4
       }
     ],
     "background": {
-      "title": "Night ambient hum",
-      "freesound_query": "electronic hum ambient",
-      "tags": ["ambient", "space", "night"],
+      "title": "Ambient Computer Hum",
+      "freesound_query": "computer fan hum quiet",
+      "tags": [
+        "computer",
+        "fan",
+        "hum",
+        "ambient"
+      ],
       "duration": 60,
       "loop": true,
-      "volume": 0.15
+      "volume": 0.1
     }
   }
 }

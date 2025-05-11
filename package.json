@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "For Creativity computational design class, we are developing an immersive domestic soundscape generated computationally",
   "main": "index.mjs",
-<<<<<<< HEAD
-=======
-  "type": "module",
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.mjs",

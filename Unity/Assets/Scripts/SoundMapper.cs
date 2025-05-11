@@ -7,343 +7,242 @@ using UnityEngine;
 public class SoundMapper : MonoBehaviour
 {
     [Header("Configuration")]
-    [Tooltip("Path to sound mappings file relative to StreamingAssets")]
     public string soundMappingsFileName = "unity_sound_mappings.json";
-    
-    [Tooltip("Path to the folder containing the sound files relative to StreamingAssets")]
     public string soundsFolderPath = "Sounds";
-    
+
     [Header("Sound Settings")]
     [Range(0f, 1f)]
     public float globalVolume = 0.8f;
-    
-    [Tooltip("Add spatial blend to interaction sounds (0 = 2D, 1 = 3D)")]
+
     [Range(0f, 1f)]
     public float spatialBlend = 0.8f;
-    
-    [Tooltip("Maximum distance for 3D sounds")]
+
     public float maxDistance = 20f;
-    
-    [Header("Interaction")]
-    [Tooltip("Enable playing sounds on interaction")]
-    public bool enableInteraction = true;
-    
-    [Tooltip("Key to trigger all interaction sounds (for testing)")]
-    public KeyCode testAllSoundsKey = KeyCode.Space;
-    
-    // Reference to RoomLoader so we can find objects
-    private RoomLoader roomLoader;
-    
-    // For tracking loaded sound mappings
-    private SoundMappingData soundMappings;
+
+    // Dicionário de objetos com sons associados
     private Dictionary<string, AudioSource> objectAudioSources = new Dictionary<string, AudioSource>();
-    
+
     void Start()
     {
-        // Find RoomLoader in scene
-        roomLoader = FindObjectOfType<RoomLoader>();
-        if (roomLoader == null)
-        {
-            Debug.LogError("RoomLoader component not found in the scene");
-            return;
-        }
-        
-        // Wait a frame for room objects to be created
-        Invoke("LoadSoundsAfterDelay", 0.1f);
+        StartCoroutine(InitSoundMapping());
     }
-    
-    void LoadSoundsAfterDelay()
+
+    public bool IsReady { get; private set; } = false;
+
+    IEnumerator InitSoundMapping()
     {
+        yield return new WaitForEndOfFrame();
         LoadSoundMappings();
-        ApplySoundsToObjects();
+        ApplySoundsToSceneObjects();
+        IsReady = true;
     }
-    
-    void Update()
-    {
-        // Test function to play all sounds
-        if (enableInteraction && Input.GetKeyDown(testAllSoundsKey))
-        {
-            PlayAllSounds();
-        }
-    }
-    
+
     void LoadSoundMappings()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, soundMappingsFileName);
-        
         if (!File.Exists(filePath))
         {
-            Debug.LogError("Sound mappings file not found at: " + filePath);
+            Debug.LogError("Ficheiro de mapeamento de sons não encontrado: " + filePath);
             return;
         }
-        
+
         string jsonContent = File.ReadAllText(filePath);
         soundMappings = JsonUtility.FromJson<SoundMappingData>(jsonContent);
-        
+
         if (soundMappings == null || soundMappings.soundMappings == null || soundMappings.soundMappings.Count == 0)
         {
-            Debug.LogError("Failed to parse sound mappings or no sound mappings found");
+            Debug.LogError("Erro ao ler mapeamento de sons ou ficheiro vazio.");
             return;
         }
-        
-        Debug.Log($"Loaded {soundMappings.soundMappings.Count} sound mappings");
+
+        Debug.Log($"Foram carregados {soundMappings.soundMappings.Count} mapeamentos de som.");
     }
-    
-    void ApplySoundsToObjects()
+
+    private SoundMappingData soundMappings;
+
+    void ApplySoundsToSceneObjects()
     {
-        if (soundMappings == null || soundMappings.soundMappings == null)
-            return;
-            
-        Transform objectsContainer = null;
-        
-        // Find the Objects container created by RoomLoader
-        if (roomLoader.roomContainer != null)
-        {
-            foreach (Transform child in roomLoader.roomContainer)
-            {
-                if (child.name == "Objects")
-                {
-                    objectsContainer = child;
-                    break;
-                }
-            }
-        }
-        
-        if (objectsContainer == null)
-        {
-            Debug.LogWarning("Objects container not found in room");
-            return;
-        }
-        
-        // Create background audio source on this object if needed
-        AudioSource backgroundSource = null;
-        
+        Transform[] allObjects = FindObjectsByType<Transform>(FindObjectsSortMode.None);
+        Debug.Log($"Total objects found in scene: {allObjects.Length}");
+
         foreach (SoundMapping mapping in soundMappings.soundMappings)
         {
-            // Handle background audio separately
-            if (mapping.type.ToLower() == "background")
+            if (mapping.type.ToLower() != "background")
             {
-                // Create or get audio source for background
-                backgroundSource = GetComponent<AudioSource>();
-                if (backgroundSource == null)
+                Transform found = Array.Find(allObjects, o => o.name.Equals(mapping.objectName, StringComparison.OrdinalIgnoreCase));
+                Debug.Log($"Looking for object: {mapping.objectName}, Found: {(found != null ? "Yes" : "No")}");
+                
+                if (found != null)
                 {
-                    backgroundSource = gameObject.AddComponent<AudioSource>();
+                    AudioSource source = found.gameObject.GetComponent<AudioSource>();
+                    if (source == null)
+                    {
+                        source = found.gameObject.AddComponent<AudioSource>();
+                    }
+
+                    source.playOnAwake = false;
+                    source.loop = mapping.loop;
+                    source.volume = mapping.volume * globalVolume;
+                    source.spatialBlend = spatialBlend;
+                    source.rolloffMode = AudioRolloffMode.Linear;
+                    source.maxDistance = maxDistance;
+
+                    StartCoroutine(LoadAndAssignAudioClip(source, mapping.filename, false));
+                    objectAudioSources[mapping.objectName] = source;
+
+                    Debug.Log($"Sound assigned to {mapping.objectName}: {mapping.title} (Has AudioSource: {source != null})");
                 }
-                
-                // Configure background audio
-                backgroundSource.loop = mapping.loop;
-                backgroundSource.volume = mapping.volume * globalVolume;
-                backgroundSource.spatialBlend = 0f; // Keep background as 2D sound
-                backgroundSource.playOnAwake = true;
-                
-                // Load and play background audio
-                StartCoroutine(LoadAndAssignAudioClip(backgroundSource, mapping.filename, true));
-                
-                Debug.Log($"Background sound assigned: {mapping.title}");
-                continue;
-            }
-            
-            // Handle interaction sounds - find matching object
-            Transform targetObject = FindObjectByName(objectsContainer, mapping.objectName);
-            
-            if (targetObject != null)
-            {
-                Debug.Log($"Found object for sound: {targetObject.name}");
-                
-                // Add audio source to the object
-                AudioSource audioSource = targetObject.gameObject.AddComponent<AudioSource>();
-                audioSource.playOnAwake = false;
-                audioSource.loop = mapping.loop;
-                audioSource.volume = mapping.volume * globalVolume;
-                audioSource.spatialBlend = spatialBlend;
-                audioSource.rolloffMode = AudioRolloffMode.Linear;
-                audioSource.maxDistance = maxDistance;
-                
-                // Load the audio clip
-                StartCoroutine(LoadAndAssignAudioClip(audioSource, mapping.filename, false));
-                
-                // Add the audio source to our dictionary
-                objectAudioSources[mapping.objectName] = audioSource;
-                
-                // Add interaction component if enabled
-                if (enableInteraction)
-                {
-                    SoundInteraction interaction = targetObject.gameObject.AddComponent<SoundInteraction>();
-                    interaction.audioSource = audioSource;
-                }
-                
-                Debug.Log($"Sound assigned to {targetObject.name}: {mapping.title}");
-            }
-            else
-            {
-                Debug.LogWarning($"Could not find object named '{mapping.objectName}' for sound '{mapping.title}'");
             }
         }
     }
-    
-    Transform FindObjectByName(Transform parent, string objectName)
-    {
-        // First try exact match
-        foreach (Transform child in parent)
-        {
-            if (child.name.Equals(objectName, StringComparison.OrdinalIgnoreCase))
-            {
-                return child;
-            }
-        }
-        
-        // Then try contains match
-        foreach (Transform child in parent)
-        {
-            if (child.name.Contains(objectName, StringComparison.OrdinalIgnoreCase))
-            {
-                return child;
-            }
-        }
-        
-        // Finally, try the other way around (objectName name might contain the shape name)
-        foreach (Transform child in parent)
-        {
-            if (objectName.Contains(child.name, StringComparison.OrdinalIgnoreCase))
-            {
-                return child;
-            }
-        }
-        
-        return null;
-    }
-    
+
     IEnumerator LoadAndAssignAudioClip(AudioSource audioSource, string filename, bool playWhenLoaded)
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, soundsFolderPath, filename);
-        
-        // If file doesn't exist, look in subfolders
-        if (!File.Exists(filePath))
+        string baseFolder = Path.Combine(Application.streamingAssetsPath, soundsFolderPath);
+        string filePath = null;
+
+        Debug.Log($"Searching for audio file: {filename} in {baseFolder}");
+
+        // Find the file path
+        try
         {
-            string soundsPath = Path.Combine(Application.streamingAssetsPath, soundsFolderPath);
-            
-            if (Directory.Exists(soundsPath))
+            string basePath = Path.Combine(baseFolder, filename);
+            if (File.Exists(basePath))
             {
-                string[] directories = Directory.GetDirectories(soundsPath);
-                bool found = false;
-                
-                foreach (string dir in directories)
-                {
-                    string subFilePath = Path.Combine(dir, filename);
-                    if (File.Exists(subFilePath))
-                    {
-                        filePath = subFilePath;
-                        found = true;
-                        break;
-                    }
-                }
-                
-                if (!found)
-                {
-                    Debug.LogError($"Sound file not found: {filename}");
-                    yield break;
-                }
+                filePath = basePath;
+                Debug.Log($"Found audio file at: {filePath}");
             }
             else
             {
-                Debug.LogError($"Sounds directory not found: {soundsPath}");
-                yield break;
+                string[] foundFiles = Directory.GetFiles(baseFolder, filename, SearchOption.AllDirectories);
+                if (foundFiles.Length > 0)
+                {
+                    filePath = foundFiles[0];
+                    Debug.Log($"Found audio file at: {filePath}");
+                }
             }
         }
-        
-        string audioFileExtension = Path.GetExtension(filePath).ToLower();
-        if (audioFileExtension == ".mp3" || audioFileExtension == ".ogg" || audioFileExtension == ".wav")
+        catch (Exception e)
         {
-            using (UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequestMultimedia.GetAudioClip(
-                "file://" + filePath, GetAudioType(audioFileExtension)))
+            Debug.LogError($"Error searching for audio file: {e.Message}");
+            yield break;
+        }
+
+        if (filePath == null)
+        {
+            Debug.LogError($"Audio file not found: {filename}");
+            yield break;
+        }
+
+        string uriPath = "file://" + filePath.Replace("\\", "/");
+        Debug.Log($"Loading audio from URI: {uriPath}");
+
+        AudioType audioType = GetAudioType(Path.GetExtension(filePath));
+        Debug.Log($"Trying to load: {filePath} with extension {Path.GetExtension(filePath)} and AudioType {audioType}");
+        if (audioType == AudioType.UNKNOWN)
+        {
+            Debug.LogError($"Unsupported audio format: {Path.GetExtension(filePath)}");
+            yield break;
+        }
+
+        UnityEngine.Networking.UnityWebRequest www = null;
+        try
+        {
+            www = UnityEngine.Networking.UnityWebRequestMultimedia.GetAudioClip(uriPath, audioType);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error creating UnityWebRequest: {e.Message}");
+            yield break;
+        }
+
+        yield return www.SendWebRequest();
+
+        try
+        {
+            if (www.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
             {
-                yield return www.SendWebRequest();
-                
-                if (www.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+                AudioClip clip = UnityEngine.Networking.DownloadHandlerAudioClip.GetContent(www);
+                if (clip != null)
                 {
-                    AudioClip clip = UnityEngine.Networking.DownloadHandlerAudioClip.GetContent(www);
                     clip.name = Path.GetFileNameWithoutExtension(filename);
                     audioSource.clip = clip;
-                    
+                    Debug.Log($"Successfully loaded audio: {filename} for {audioSource.gameObject.name}");
+
                     if (playWhenLoaded)
-                    {
                         audioSource.Play();
-                    }
-                    
-                    Debug.Log($"Successfully loaded audio: {filename}");
                 }
                 else
                 {
-                    Debug.LogError($"Error loading audio clip {filename}: {www.error}");
+                    Debug.LogError($"Failed to create AudioClip from {filename}");
                 }
             }
+            else
+            {
+                Debug.LogError($"Error loading audio {filename}: {www.error}");
+            }
         }
-        else
+        catch (Exception e)
         {
-            Debug.LogError($"Unsupported audio format: {audioFileExtension}");
+            Debug.LogError($"Error processing audio clip: {e.Message}");
+        }
+        finally
+        {
+            if (www != null)
+                www.Dispose();
         }
     }
-    
+
     AudioType GetAudioType(string extension)
     {
         switch (extension)
         {
-            case ".mp3": 
-                return AudioType.MPEG;
-            case ".ogg": 
-                return AudioType.OGGVORBIS;
-            case ".wav": 
-                return AudioType.WAV;
-            default: 
-                return AudioType.UNKNOWN;
+            case ".mp3": return AudioType.MPEG;
+            case ".ogg": return AudioType.OGGVORBIS;
+            case ".wav": return AudioType.WAV;
+            default: return AudioType.UNKNOWN;
         }
     }
-    
-    public void PlayAllSounds()
+
+    // Método público para o AgentController aceder
+    public Dictionary<string, AudioSource> GetObjectAudioSources()
     {
-        foreach (var source in objectAudioSources.Values)
-        {
-            if (source != null && !source.isPlaying)
-            {
-                source.Play();
-            }
-        }
+        return objectAudioSources;
     }
-    
+
+    // Permite o agente tocar um som
     public void PlaySoundForObject(string objectName)
     {
+        Debug.Log($"Attempting to play sound for: {objectName}");
+        
         if (objectAudioSources.TryGetValue(objectName, out AudioSource source))
         {
-            if (source != null && !source.isPlaying)
+            if (source != null)
             {
-                source.Play();
+                if (source.clip == null)
+                {
+                    Debug.LogError($"No AudioClip assigned for {objectName}");
+                    return;
+                }
+                
+                if (!source.isPlaying)
+                {
+                    source.Play();
+                    Debug.Log($"Playing sound for {objectName}");
+                }
+                else
+                {
+                    Debug.Log($"Sound for {objectName} is already playing");
+                }
+            }
+            else
+            {
+                Debug.LogError($"AudioSource is null for {objectName}");
             }
         }
-    }
-}
-
-// Add a simple interaction component
-public class SoundInteraction : MonoBehaviour
-{
-    [HideInInspector]
-    public AudioSource audioSource;
-    private bool isMouseOver = false;
-    
-    void OnMouseEnter()
-    {
-        isMouseOver = true;
-    }
-    
-    void OnMouseExit()
-    {
-        isMouseOver = false;
-    }
-    
-    void Update()
-    {
-        if (isMouseOver && Input.GetMouseButtonDown(0) && audioSource != null)
+        else
         {
-            audioSource.Play();
+            Debug.LogError($"No AudioSource found for object: {objectName}");
         }
     }
 }

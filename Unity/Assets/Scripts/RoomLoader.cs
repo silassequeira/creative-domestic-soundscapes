@@ -5,7 +5,7 @@ public class RoomLoader : MonoBehaviour
 {
     public string jsonFileName = "room.json";
     public Transform roomContainer;
-    
+
     // Optional - set materials for different object types
     public Material defaultMaterial;
     public Material glassMaterial;
@@ -27,10 +27,10 @@ public class RoomLoader : MonoBehaviour
         }
 
         string jsonContent = File.ReadAllText(filePath);
-        
+
         // Debug log to see the JSON content
         Debug.Log("Loading JSON content: " + jsonContent);
-        
+
         RoomData roomData = JsonUtility.FromJson<RoomData>(jsonContent);
 
         if (roomData == null)
@@ -38,9 +38,9 @@ public class RoomLoader : MonoBehaviour
             Debug.LogError("Failed to parse JSON data");
             return;
         }
-        
+
         Debug.Log("Room name: " + roomData.environment.name);
-        
+
         // Create container if not set
         if (roomContainer == null)
         {
@@ -53,7 +53,7 @@ public class RoomLoader : MonoBehaviour
         {
             GameObject envContainer = new GameObject("Environment");
             envContainer.transform.SetParent(roomContainer);
-            
+
             foreach (ShapeData shape in roomData.environment.shapes)
             {
                 CreateShape(shape, envContainer.transform);
@@ -69,7 +69,7 @@ public class RoomLoader : MonoBehaviour
         {
             GameObject objectsContainer = new GameObject("Objects");
             objectsContainer.transform.SetParent(roomContainer);
-            
+
             foreach (ShapeData obj in roomData.objects)
             {
                 CreateShape(obj, objectsContainer.transform);
@@ -79,13 +79,20 @@ public class RoomLoader : MonoBehaviour
         {
             Debug.LogWarning("No objects found in JSON");
         }
+        // === Criar o agente ===
+        GameObject agent = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        agent.name = "Agent";
+        agent.transform.position = new Vector3(0, 0.5f, 0);
+        agent.transform.localScale = Vector3.one * 0.5f;
+        agent.AddComponent<AudioSource>();
+        agent.AddComponent<AgentController>();
     }
 
     private void CreateShape(ShapeData shapeData, Transform parent)
     {
         // Debug info
         Debug.Log($"Creating shape: {shapeData.name}, shape: {shapeData.shape}");
-        
+
         if (shapeData.shape == null)
         {
             Debug.LogError($"Shape type missing for {shapeData.name}");
@@ -93,7 +100,7 @@ public class RoomLoader : MonoBehaviour
         }
 
         PrimitiveType primitiveType;
-        
+
         // Determine shape type
         switch (shapeData.shape.ToLower())
         {
@@ -113,12 +120,12 @@ public class RoomLoader : MonoBehaviour
                 Debug.LogWarning($"Unknown shape type: {shapeData.shape}");
                 return;
         }
-        
+
         // Create game object
         GameObject newObject = GameObject.CreatePrimitive(primitiveType);
         newObject.name = shapeData.name;
         newObject.transform.SetParent(parent);
-        
+
         // Set position
         if (shapeData.position != null)
         {
@@ -132,7 +139,7 @@ public class RoomLoader : MonoBehaviour
         {
             Debug.LogWarning($"No position data for {shapeData.name}");
         }
-        
+
         // Set rotation
         if (shapeData.rotation != null)
         {
@@ -142,7 +149,7 @@ public class RoomLoader : MonoBehaviour
                 shapeData.rotation.z
             );
         }
-        
+
         // Set scale
         if (shapeData.size != null)
         {
@@ -156,12 +163,12 @@ public class RoomLoader : MonoBehaviour
         {
             Debug.LogWarning($"No size data for {shapeData.name}");
         }
-        
+
         // Set color
         if (!string.IsNullOrEmpty(shapeData.color))
         {
             Renderer renderer = newObject.GetComponent<Renderer>();
-            
+
             // Choose material based on object type
             if (shapeData.name.ToLower().Contains("window") && glassMaterial != null)
             {
@@ -175,7 +182,7 @@ public class RoomLoader : MonoBehaviour
             {
                 renderer.material = new Material(defaultMaterial);
             }
-            
+
             // Parse and apply color
             Color color;
             if (ColorUtility.TryParseHtmlString(shapeData.color, out color))
