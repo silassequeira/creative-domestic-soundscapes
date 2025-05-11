@@ -148,15 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe7c82bf7547aa45b4858c8cc56eb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   jsonFileName: room.json
   roomContainer: {fileID: 0}
   defaultMaterial: {fileID: 0}
   glassMaterial: {fileID: 0}
   woodMaterial: {fileID: 0}
-=======
-  fileName: room.json
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9
 --- !u!4 &114422099
 Transform:
   m_ObjectHideFlags: 0
@@ -172,7 +168,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &138520836
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,8 +219,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9
 --- !u!1 &188818918
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +484,4 @@ SceneRoots:
   - {fileID: 523655689}
   - {fileID: 188818921}
   - {fileID: 114422099}
-<<<<<<< HEAD
   - {fileID: 138520838}
-=======
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9

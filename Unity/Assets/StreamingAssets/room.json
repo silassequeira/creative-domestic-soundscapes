@@ -1,6 +1,5 @@
 {
   "environment": {
-<<<<<<< HEAD
     "name": "Bedroom Software Developer",
     "width": 4.5,
     "depth": 5.0,
@@ -163,66 +162,3 @@
     }
   ]
 }
-=======
-    "walls": [
-      {
-        "id": "Wall_AB",
-        "position": [3, 1.5, 0],
-        "width": 6,
-        "height": 3,
-        "depth": 0.1,
-        "rotation": [0, 0, 0]
-      },
-      {
-        "id": "Wall_BC",
-        "position": [6, 1.5, 1],
-        "width": 0.1,
-        "height": 3,
-        "depth": 2,
-        "rotation": [0, 90, 0]
-      },
-      {
-        "id": "Wall_CD",
-        "position": [5, 1.5, 2],
-        "width": 2,
-        "height": 3,
-        "depth": 0.1,
-        "rotation": [0, 0, 0]
-      },
-      {
-        "id": "Wall_DE",
-        "position": [4, 1.5, 4],
-        "width": 0.1,
-        "height": 3,
-        "depth": 4,
-        "rotation": [0, 90, 0]
-      },
-      {
-        "id": "Wall_EF",
-        "position": [2, 1.5, 6],
-        "width": 4,
-        "height": 3,
-        "depth": 0.1,
-        "rotation": [0, 0, 0]
-      },
-      {
-        "id": "Wall_FA",
-        "position": [0, 1.5, 3],
-        "width": 0.1,
-        "height": 3,
-        "depth": 6,
-        "rotation": [0, 90, 0]
-      }
-    ],
-    "floor":
-      {
-        "id": "Floor_1",
-        "position": [3, 0, 1],
-        "width": 6,
-        "depth": 2,
-        "height": 0.1,
-        "rotation": [0, 0, 0]
-      }
-  }
-}
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9

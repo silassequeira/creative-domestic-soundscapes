@@ -1,0 +1,53 @@
+{
+    "agent": {
+      "name": "Agent1",
+      "trajectory": [
+        {
+          "target": "Bed",
+          "wait_time": 2.5,
+          "sound_clip": "cama.wav"
+        },
+        {
+          "target": "Desk",
+          "wait_time": 1.8,
+          "sound_clip": "secretaria.wav"
+        },
+        {
+          "target": "Chair",
+          "wait_time": 1.2,
+          "sound_clip": "cadeira.wav"
+        },
+        {
+          "target": "Bookshelf",
+          "wait_time": 3.0,
+          "sound_clip": "estante.wav"
+        },
+        {
+          "target": "Telescope",
+          "wait_time": 2.7,
+          "sound_clip": "telescopio.wav"
+        },
+        {
+          "target": "Space_Suit_Display",
+          "wait_time": 2.3,
+          "sound_clip": "fato_espacial.wav"
+        },
+        {
+          "target": "Planet_Model_1",
+          "wait_time": 1.5,
+          "sound_clip": "modelo_planeta_1.wav"
+        },
+        {
+          "target": "Planet_Model_2",
+          "wait_time": 2.0,
+          "sound_clip": "modelo_planeta_2.wav"
+        },
+        {
+          "target": "Wall_Art_Space",
+          "wait_time": 1.0,
+          "sound_clip": "arte_parede_espaco.wav"
+        }
+      ]
+    }
+  }
+  
