@@ -41,7 +41,6 @@ if (!fs.existsSync(soundsDir)) {
     console.log(`Created sounds directory at ${soundsDir}`);
 }
 
-<<<<<<< HEAD
 // Add these constants at the top of your file (after other constants)
 const UNITY_BASE_PATH = path.join(__dirname, 'Unity');
 const UNITY_STREAMING_ASSETS_PATH = path.join(UNITY_BASE_PATH, 'Assets', 'StreamingAssets');
@@ -58,8 +57,6 @@ if (!fs.existsSync(UNITY_SOUNDS_PATH)) {
     console.log(`Created Unity Sounds directory at ${UNITY_SOUNDS_PATH}`);
 }
 
-=======
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9
 // Simple error handler
 const handleError = (res, error) => {
     console.error('API Error:', error.message);
@@ -90,10 +87,6 @@ const requireAuth = (req, res, next) => {
 
 // ROUTES
 
-<<<<<<< HEAD
-=======
-// Update home page with more options
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9
 app.get('/', (req, res) => {
     const loggedIn = !!req.session.accessToken;
 
@@ -107,10 +100,7 @@ app.get('/', (req, res) => {
         <ul>
           ${loggedIn ? `
           <li><a href="/my-downloads">View my downloaded sounds</a></li>
-<<<<<<< HEAD
           <li><a href="/process-audio-json"><strong>Process audio.json file</strong></a></li>
-=======
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9
           ` : ''}
         </ul>
     `);
@@ -469,7 +459,6 @@ app.get('/my-downloads', requireAuth, (req, res) => {
     `);
 });
 
-<<<<<<< HEAD
 // Update your process-audio-json endpoint to reuse the download functionality
 app.get('/process-audio-json', ensureFreshToken, async (req, res) => {
     try {
@@ -887,8 +876,6 @@ app.get('/process-audio-json', ensureFreshToken, async (req, res) => {
     }
 });
 
-=======
->>>>>>> bb33b88959aa82680153772d48f5e6d602e5d1e9
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
